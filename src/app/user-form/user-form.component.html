@@ -1,0 +1,41 @@
+<div class="container-main">
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <label for="first-name">First Name: </label>
+    <input id="first-name" type="text" formControlName="firstName">
+    <div *ngIf="profileForm.controls['firstName'].invalid && (profileForm.controls['firstName'].dirty || profileForm.controls['firstName'].touched)" class="alert">
+      Please enter First Name
+  </div>
+
+    <label for="last-name">Last Name: </label>
+    <input id="last-name" type="text" formControlName="lastName">
+    <div *ngIf="profileForm.controls['lastName'].invalid && (profileForm.controls['lastName'].dirty || profileForm.controls['lastName'].touched)" class="alert">
+      Please enter Last Name
+  </div>
+
+    <label for="gender">Gender: </label>
+    <select for="gender" formControlName="gender">
+      <option value="">Empty</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+    <div *ngIf="profileForm.controls['gender'].invalid && (profileForm.controls['gender'].dirty || profileForm.controls['gender'].touched)" class="alert">
+      Missing Gender
+  </div>
+<div class="subcontainer" formGroupName="userInfoForm">
+<label for="emial">Email: </label>
+<input id="emial" type="email" formControlName="email">
+
+<label for="password">Password: </label>
+<input id="password" type="password" formControlName="password" minlength="8">
+
+<label for="address">Address: </label>
+<input id="address" type="text" formControlName="address">
+
+<label for="phoneNumber">Phone Number: </label>
+<input id="phoneNumber" type="tel" formControlName="phoneNumber" minlength="8">
+</div>
+<button type="submit" [disabled]="!profileForm.valid">Submit</button>
+<p>Form Status: {{ profileForm.status }}</p>
+</form>
+</div>
